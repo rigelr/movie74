@@ -1,5 +1,7 @@
 package com.rigelr.watchedmovie.Adapters;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +20,12 @@ import com.rigelr.watchedmovie.models.Movie;
 
 import java.util.ArrayList;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class CardViewMovieAdapter extends RecyclerView.Adapter<CardViewMovieAdapter.CardViewViewHolder> {
     private ArrayList<Movie> listMovie;
+
+    String number = "08159324414" ;
 
     public CardViewMovieAdapter(ArrayList<Movie> listMovie) {
         this.listMovie = listMovie;
@@ -46,8 +52,6 @@ public class CardViewMovieAdapter extends RecyclerView.Adapter<CardViewMovieAdap
             public void onClick(View v) {
                 Toast.makeText(holder.itemView.getContext(), "Favorite " +
                         listMovie.get(holder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
-                
-
             }
         });
         holder.btnShare.setOnClickListener(new View.OnClickListener() {

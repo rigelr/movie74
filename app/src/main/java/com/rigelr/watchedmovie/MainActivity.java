@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
         rvMovies.setAdapter(cardViewHeroAdapter);
     }
 
+    private void About(){
+        Intent intent = new Intent(this,AboutActivity.class);
+        startActivity(intent);
+    }
+
+
+
 
     public void setMode(int selectedMode) {
         switch (selectedMode) {
@@ -63,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_cardview:
                 showRecyclerCardView();
                 break;
-            case R.id.action_favorite:
+            case R.id.action_about:
+                About();
                 break;
         }
     }
