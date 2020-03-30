@@ -46,6 +46,7 @@ public class CardViewMovieAdapter extends RecyclerView.Adapter<CardViewMovieAdap
             public void onClick(View v) {
                 Toast.makeText(holder.itemView.getContext(), "Favorite " +
                         listMovie.get(holder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
+                
 
             }
         });

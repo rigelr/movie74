@@ -38,11 +38,11 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
                 .load(movie.getPhoto())
                 .apply(new RequestOptions().override(55, 55))
                 .into(holder.imgPhoto);
-        //holder.tvName.setText(movie.getName());
-        holder.tvDetail.setText(movie.getDetail());
+        holder.tvName.setText(movie.getName());
+        //holder.tvDetail.setText(movie.getDetail());
 
 
-        holder.tvName.setText(listMovie.get(position).getName().toString());
+        //holder.tvName.setText(listMovie.get(position).getName().toString());
 
 
     }
@@ -60,7 +60,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
             super(itemView);
             imgPhoto = itemView.findViewById(R.id.img_item_photo);
             tvName = itemView.findViewById(R.id.tv_item_name);
-            tvDetail = itemView.findViewById(R.id.tv_item_detail);
+            //tvDetail = itemView.findViewById(R.id.tv_item_detail);
         }
     }
 }
