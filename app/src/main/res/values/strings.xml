@@ -9,4 +9,6 @@
     <string name="share">Share</string>
     <string name="decription">decription</string>
     <string name="pesan">pesan</string>
+    <string name="error_activity_not_found">gagal</string>
+    <string name="close">tutup</string>
 </resources>

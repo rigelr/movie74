@@ -22,8 +22,6 @@ import com.rigelr.watchedmovie.models.Movie;
 
 import java.util.ArrayList;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 public class CardViewMovieAdapter extends RecyclerView.Adapter<CardViewMovieAdapter.CardViewViewHolder> {
     private ArrayList<Movie> listMovie;
 
@@ -42,6 +40,7 @@ public class CardViewMovieAdapter extends RecyclerView.Adapter<CardViewMovieAdap
 
     @Override
     public void onBindViewHolder(@NonNull final CardViewViewHolder holder, int position) {
+
         final Movie movie = listMovie.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(movie.getPhoto())
@@ -56,8 +55,8 @@ public class CardViewMovieAdapter extends RecyclerView.Adapter<CardViewMovieAdap
                         listMovie.get(holder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(holder.itemView.getContext(), AboutActivity.class);
                 Bundle b = new Bundle();
-                Intent message = new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms",number,null));
-                message.putExtra("sms_body","Halo saya mau pesan film \t"+movie.getName()+"");
+                Intent message = new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null));
+                message.putExtra("sms_body", "Halo saya mau pesan film \t" + movie.getName() + "");
 
                 //begin activity
                 holder.itemView.getContext().startActivity(message);
@@ -72,13 +71,27 @@ public class CardViewMovieAdapter extends RecyclerView.Adapter<CardViewMovieAdap
                 Bundle b = new Bundle();
 //                Intent message = new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms",number,null));
 //                message.putExtra("sms_body","Halo saya mau pesan film \t"+movie.getName()+"");
+                try
+                {
+                    // Check if the Twitter app is installed on the phone.
+                    holder.itemView.getContext().getPackageManager().getPackageInfo("com.twitter.android", 0);
+                    Intent insstent = new Intent(Intent.ACTION_SEND);
+                    intent.setClassName("com.twitter.android", "com.twitter.android.composer.ComposerActivity");
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Your text");
+                    holder.itemView.getContext().startActivity(insstent);
 
-                //begin activity
-                holder.itemView.getContext().startActivity(intent);
-
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(holder.itemView.getContext(),"Twitter is not installed on this device",Toast.LENGTH_LONG).show();
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/intent/tweet?text=ayo nonton film "+movie.getName()+"dan belitiket di 74Movie"));
+                    holder.itemView.getContext().startActivity(browserIntent);
+                }
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
