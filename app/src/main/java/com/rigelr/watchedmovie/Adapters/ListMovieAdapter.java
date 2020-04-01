@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,6 +62,8 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
             imgPhoto = itemView.findViewById(R.id.img_item_photo);
             tvName = itemView.findViewById(R.id.tv_item_name);
             //tvDetail = itemView.findViewById(R.id.tv_item_detail);
+//            Toast.makeText(holder.itemView.getContext(), "Share " +
+//                    listMovie.get(holder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -19,23 +19,24 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="310dp"
-        android:layout_height="127dp"
-        android:layout_marginTop="67dp"
-        android:textSize="14sp"
+        android:layout_width="312dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="40dp"
         android:text="aplikasi untuk membantu anda dalam memilih film yang ada inginkan. Aplikasi ini memudah kan anda dalam memilih film yang ada di toko kami. Tentunya film-film yang ada disini sangat berkualitas.  "
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="116dp"
-        android:text="info"
+        android:layout_marginTop="76dp"
         android:onClick="handleInfo"
+        android:text="request"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,10 +46,20 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="96dp"
-        android:text="saran"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="92dp"
         android:onClick="handleSaran"
+        android:text="saran"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="207dp"
+        android:layout_height="152dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/film" />
 </androidx.constraintlayout.widget.ConstraintLayout>
