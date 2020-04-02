@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.rigelr.watchedmovie.OnClicklistener;
 import com.rigelr.watchedmovie.R;
 import com.rigelr.watchedmovie.models.Movie;
 
@@ -20,9 +21,16 @@ import java.util.ArrayList;
 public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.ListViewHolder>  {
     private ArrayList<Movie> listMovie;
 
+    private OnClicklistener onClicklistener;
+
     public ListMovieAdapter(ArrayList<Movie> list) {
         this.listMovie = list;
     }
+
+    public void setOnClicklistener(OnClicklistener onClicklistener) {
+        this.onClicklistener = onClicklistener;
+    }
+
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,7 +42,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        Movie movie = listMovie.get(position);
+        final Movie movie = listMovie.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(movie.getPhoto())
                 .apply(new RequestOptions().override(55, 55))
@@ -45,7 +53,13 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
 
         //holder.tvName.setText(listMovie.get(position).getName().toString());
 
-
+        // Set Item OnClick Listener
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClicklistener.handle(movie);
+            }
+        });
     }
 
     @Override

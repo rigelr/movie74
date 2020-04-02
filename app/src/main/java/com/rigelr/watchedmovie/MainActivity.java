@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -46,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
     private void showRecyclerList(){
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
         ListMovieAdapter listMovieAdapter = new ListMovieAdapter(list);
+        listMovieAdapter.setOnClicklistener(new OnClicklistener() {
+            @Override
+            public void handle(Movie movie) {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra(DetailActivity.EXTRA_DATA_MOVIE,  movie);
+                startActivity(intent);
+            }
+        });
         rvMovies.setAdapter(listMovieAdapter);
     }
 
