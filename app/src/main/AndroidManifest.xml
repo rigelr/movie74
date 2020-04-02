@@ -12,7 +12,6 @@
         <activity android:name=".DetailActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
