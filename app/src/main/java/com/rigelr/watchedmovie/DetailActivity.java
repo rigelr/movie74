@@ -29,10 +29,10 @@ public class DetailActivity extends AppCompatActivity {
 
         if (getIntent().hasExtra(EXTRA_DATA_MOVIE)) {
             Movie movie = getIntent().getParcelableExtra(EXTRA_DATA_MOVIE);
-//            Glide.with(itemView.getContext())
-//                    .load(movie.getPhoto())
-//                    .apply(new RequestOptions().override(350, 550))
-//                    .into(IVposter);
+            Glide.with(this)
+                    .load(movie.getPhoto())
+                    .apply(new RequestOptions().override(350, 550))
+                    .into(IVposter);
             TVtitle.setText(movie.getName());
             TVdesc.setText(movie.getDetail());
 
