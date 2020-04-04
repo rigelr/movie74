@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -20,14 +21,14 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     public void handleInfo(View view) {
-        Intent call = new Intent(Intent. ACTION_DIAL);
-        call.setData(Uri. fromParts("tel",number,null));
-        startActivity(call);
+        Intent request = new Intent(this, RequestActivity.class);
+        startActivity(request);
+
     }
 
     public void handleSaran(View view) {
-        Intent message = new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms",number,null));
-        message.putExtra("sms_body","Halo saya ingin memberi sebuah saran \t");
-        startActivity(message);
+        Intent call = new Intent(Intent. ACTION_DIAL);
+        call.setData(Uri. fromParts("tel",number,null));
+        startActivity(call);
     }
 }
