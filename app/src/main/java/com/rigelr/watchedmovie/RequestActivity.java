@@ -2,6 +2,8 @@ package com.rigelr.watchedmovie;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -24,7 +26,7 @@ public class RequestActivity extends AppCompatActivity
     @NotEmpty
     private TextInputEditText movieInput;
     @NotEmpty
-    @Max(value = 4)
+    @Max(value = 2021)
     private TextInputEditText yearInput;
     private TextInputEditText directorInput;
     @NotEmpty
@@ -47,7 +49,7 @@ public class RequestActivity extends AppCompatActivity
 
     @Override
     public void onValidationSucceeded() {
-        Toast.makeText(this, "Request dikirim.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Send Request. check your email", Toast.LENGTH_SHORT).show();
     }
 
     @Override
