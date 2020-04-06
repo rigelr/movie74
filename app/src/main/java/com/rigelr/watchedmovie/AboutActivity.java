@@ -13,22 +13,29 @@ import android.widget.EditText;
 
 public class AboutActivity extends AppCompatActivity {
 
-    String number = "08159324414" ;
+    String number = "08159324415" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
     }
 
-    public void handleInfo(View view) {
+    public void handleRequest(View view) {
         Intent request = new Intent(this, RequestActivity.class);
         startActivity(request);
 
     }
 
     public void handleSaran(View view) {
-        Intent call = new Intent(Intent. ACTION_DIAL);
-        call.setData(Uri. fromParts("tel",number,null));
-        startActivity(call);
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        // This ensures only SMS apps respond
+        intent.setData(Uri.parse("smsto:"+number));
+        intent.putExtra("sms_body", "Hello saya mau kasih saran buat 74 movie tentang");
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+//        Intent call = new Intent(Intent. ACTION_DIAL);
+//        call.setData(Uri. fromParts("tel",number,null));
+//        startActivity(call);
     }
 }

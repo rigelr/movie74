@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
         android:layout_marginTop="76dp"
-        android:onClick="handleInfo"
+        android:onClick="handleRequest"
         android:text="request"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.0"

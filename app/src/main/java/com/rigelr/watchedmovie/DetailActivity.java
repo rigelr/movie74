@@ -23,6 +23,7 @@ public class DetailActivity extends AppCompatActivity {
     private ImageView IVposter;
     String number = "08159324414" ;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class DetailActivity extends AppCompatActivity {
         TVdesc = findViewById(R.id.txt_desc);
         IVposter = findViewById(R.id.imageView3);
 
+
         if (getIntent().hasExtra(EXTRA_DATA_MOVIE)) {
             Movie movie = getIntent().getParcelableExtra(EXTRA_DATA_MOVIE);
             Glide.with(this)
@@ -40,18 +42,43 @@ public class DetailActivity extends AppCompatActivity {
                     .into(IVposter);
             TVtitle.setText(movie.getName());
             TVdesc.setText(movie.getDetail());
-
             Toast.makeText(this, movie.getName(), Toast.LENGTH_SHORT)
                     .show();
+
+
         }
     }
 
-    public void handleShare(View view) {
+    public void handlePesan(View view) {
         Intent intent = new Intent(this, DetailActivity.class);
         Intent message = new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null));
-        message.putExtra("sms_body", "Halo saya mau pesan film \t" + movie.getName() + "");
+        message.putExtra("sms_body", "Halo saya mau pesan film ");
 
         //begin activity
         startActivity(message);
+    }
+
+    public void handleShare(View view) {
+        Intent intent = new Intent(this, AboutActivity.class);
+        Bundle b = new Bundle();
+//                Intent message = new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms",number,null));
+//                message.putExtra("sms_body","Halo saya mau pesan film \t"+movie.getName()+"");
+        try
+        {
+            // Check if the Twitter app is installed on the phone.
+            getPackageManager().getPackageInfo("com.twitter.android", 0);
+            Intent insstent = new Intent(Intent.ACTION_SEND);
+            intent.setClassName("com.twitter.android", "com.twitter.android.composer.ComposerActivity");
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, "Your text");
+            startActivity(insstent);
+
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(this,"Twitter is not installed on this device",Toast.LENGTH_LONG).show();
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/intent/tweet?text=ayo nonton film dan beli tiket di 74Movie"));
+            startActivity(browserIntent);
+        }
     }
 }
