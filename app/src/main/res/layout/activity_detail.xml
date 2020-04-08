@@ -45,6 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:text="share"
+
+        android:background="@color/colorPrimary"
         android:onClick="handleShare"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonpesan"
@@ -58,6 +60,8 @@
         android:layout_marginEnd="96dp"
         android:layout_marginBottom="48dp"
         android:text="pesan"
+
+        android:background="@color/colorPrimary"
         android:onClick="handlePesan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
